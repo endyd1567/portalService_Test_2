@@ -5,14 +5,17 @@ import org.springframework.context.annotation.Configuration;
 import portalService.test2.connection.ConnectionMaker;
 import portalService.test2.connection.JejuConnectionMaker;
 
+@Configuration
 public class DaoFactory {
 
+    @Bean
     public UserDao userDao() {
         UserDao userDao = new UserDao(connectionMaker());
         return userDao;
     }
 
-    private ConnectionMaker connectionMaker() {
+    @Bean
+    public ConnectionMaker connectionMaker() {
         return new JejuConnectionMaker();
     }
 }
