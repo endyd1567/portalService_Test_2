@@ -23,8 +23,27 @@ class UserDaoTest {
         assertThat(user.getId()).isEqualTo(id);
         assertThat(user.getName()).isEqualTo(name);
         assertThat(user.getPassword()).isEqualTo(password);
+    }
 
+    @Test
+    public void insert() throws SQLException {
 
+        String name = "엄두용";
+        String password = "1234";
+        User user = new User();
+        user.setName(name);
+        user.setPassword(password);
+
+        UserDao userDao = new UserDao();
+        userDao.insert(user);
+
+        assertThat(user.getId()).isGreaterThan(1l);
+
+        User insertedUser = userDao.findById(user.getId());
+
+        assertThat(insertedUser.getId()).isEqualTo(user.getId());
+        assertThat(insertedUser.getName()).isEqualTo(user.getName());
+        assertThat(insertedUser.getPassword()).isEqualTo(user.getPassword());
     }
 
 }
