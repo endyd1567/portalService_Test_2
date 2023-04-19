@@ -18,6 +18,7 @@ public class JdbcContext {
     }
 
     public User jdbcContextForFind(StatementStrategy statementStrategy) throws SQLException {
+
         Connection con = null;
         PreparedStatement psmt = null;
         ResultSet rs = null;
